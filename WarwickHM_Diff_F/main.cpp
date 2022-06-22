@@ -9,7 +9,7 @@ class PrimeNumber {
     int m_result;                       //n-ное простое число
     int m_prog;                         //текущий прогресс в %
     std::vector<int> m_vec;             //вектор найденных простых чисел
-    std::vector<char> v_prog;    //вектор шкалы прогресса
+    std::vector<char> v_prog;           //вектор шкалы прогресса
 public:
     PrimeNumber(const int &last) : m_last(last) {
         v_prog.resize(10);
@@ -33,7 +33,7 @@ public:
             }
             if (isPrime == true) {
                 m_vec.push_back(m_cur);
-                std::this_thread::sleep_for(std::chrono::milliseconds(10)); //замедлитель вычислений
+                std::this_thread::sleep_for(std::chrono::milliseconds(10)); //замедление вычислений
                 m_prog = static_cast<int>((m_vec.size()*100)/m_vec.capacity());
             }
             m_cur++;
