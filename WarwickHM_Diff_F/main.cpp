@@ -9,7 +9,7 @@ std::mutex m;
 template <typename T> void pcout(const T& Info) {
     std::lock_guard<std::mutex> lg(m);
     std::cout << Info << " ";
-//    std::this_thread::sleep_for(200ms);
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 void protContPrint(const std::vector<int> & Cont) {
@@ -17,7 +17,6 @@ void protContPrint(const std::vector<int> & Cont) {
         pcout(Cont[i]);
     }
     std::cout << std::endl;
-//    std::this_thread::sleep_for(1s);
 }
 
 int main() {
