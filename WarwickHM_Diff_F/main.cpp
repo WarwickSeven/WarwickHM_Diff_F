@@ -6,7 +6,7 @@
 
 std::mutex m;
 
-template <typename T> void pcout(const T& Info) {
+template <typename T> void pcout(const T & Info) {
     std::lock_guard<std::mutex> lg(m);
     std::cout << Info << " ";
     std::this_thread::sleep_for(std::chrono::milliseconds(200));
