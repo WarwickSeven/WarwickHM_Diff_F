@@ -3,6 +3,7 @@
 #include <thread>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 int32_t getRandomNum(const int32_t min, const int32_t max) {
     const static auto seed = std::chrono::system_clock::now().time_since_epoch().count();
