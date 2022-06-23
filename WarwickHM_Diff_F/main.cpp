@@ -16,7 +16,6 @@ public:
         for (int i = 0; i < 10; i++)
             v_prog[i] = '_';
     }
-    
     bool isPrime(const int & x) {
         if (x%2 == 0) {
             return false;
@@ -29,7 +28,6 @@ public:
         }
         return true;
     }
-    
     int searchPM() {
         m_vec.reserve(m_last);
         m_vec.push_back(2);
@@ -50,11 +48,9 @@ public:
     int getProg() {
         return m_prog;
     }
-    
     int getResult() {
         return m_result;
     }
-    
     void printProgress() {
         for (int i = 1; (i*10) <= m_prog; i++ ) {
             if ((i*10) <= m_prog)
