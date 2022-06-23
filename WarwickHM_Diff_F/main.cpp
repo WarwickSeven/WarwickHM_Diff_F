@@ -17,24 +17,30 @@ public:
             v_prog[i] = '_';
     }
     
-    int calcPM() {
+    bool isPrime(const int & x) {
+        if (x%2 == 0) {
+            return false;
+        } else {
+            for (int i = 3; i < x; i+=2) {
+                if (x % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    int searchPM() {
         m_vec.reserve(m_last);
         m_vec.push_back(2);
         m_cur = 3;
-        bool isPrime;
         for (int k = 1; k < m_last; k++) {
-            isPrime = true;
-            for (int i = 2; i < m_cur; i++) {
-                if (m_cur % i == 0) {
-                    isPrime = false;
-                    k--;
-                    break;
-                }
-            }
-            if (isPrime == true) {
+            if (isPrime(m_cur)) {
                 m_vec.push_back(m_cur);
                 std::this_thread::sleep_for(std::chrono::milliseconds(10)); //замедление вычислений
                 m_prog = static_cast<int>((m_vec.size()*100)/m_vec.capacity());
+            } else {
+                k--;
             }
             m_cur++;
         }
@@ -69,7 +75,7 @@ int main() {
         std::cin >> numPN;
     }
     PrimeNumber pn1(numPN);
-    std::thread th1(&PrimeNumber::calcPM, &pn1);
+    std::thread th1(&PrimeNumber::searchPM, &pn1);
     th1.detach();
     while (pn1.getProg() < 100) {
         pn1.printProgress();
